@@ -1,22 +1,18 @@
 import { createServer } from '@graphql-yoga/node';
 
+const typeDefs = 'src/schema/schema.graphql';
+const resolvers = {
+	Query: {
+		hello: (_, { name }) => `Hello ${name || 'world'}`,
+	},
+};
 const server = createServer({
 	//definir le schema de graphQL
-	schema: {
-		//le Contrat offrir par notre Server graphQl
-		typeDefs: /* GraphQL */ `
-			type Query {
-				hello(name: String): String
-			}
-		`,
 
-		//implementation de contrat
-		resolvers: {
-			Query: {
-				hello: (_, { name }) => `Hello ${name || 'world'}`,
-			},
-		},
-	},
+	//le Contrat offrir par notre Server graphQl
+	typeDefs,
+	//implementation de contrat
+	resolvers,
 });
 
 server.start();
