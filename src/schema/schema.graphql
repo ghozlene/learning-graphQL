@@ -1,0 +1,17 @@
+enum TodoStatusEnum {
+    WATTING
+    IN_PROGRESS
+    CANCLED
+    DONE
+}
+
+type Todo{
+    id:ID!
+    name:String!
+    content:String!
+    status:TodoStatusEnum!
+}
+
+type Query  {
+    hello:(name:String):String
+}
